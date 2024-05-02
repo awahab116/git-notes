@@ -1,0 +1,13 @@
+/* Button.scss */
+@import "../../../styles.scss";
+
+
+.my-button {
+    cursor: pointer;
+    color: $primary-color;
+    background-color: $text-color;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 40px;
+  }
+  
