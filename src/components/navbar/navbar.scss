@@ -1,0 +1,62 @@
+@import "../../styles.scss";
+.navbar {
+    width: calc(100% - 200px); /* accounting for 100px padding on both sides */
+    margin: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: $primary-color;
+    color: $text-color;
+    display: flex;
+    align-items: center; // Vertically align items
+    justify-content: center; // Horizontally align items
+}
+
+.navbar .navbar-right {
+    display: flex; /* Add this line */
+    align-items: center; /* Add this line */
+    margin-left: auto;
+}
+
+.navbar .navbar-link {
+    color: $text-color;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.navbar form.nosubmit {
+    border: none;
+    padding: 0;
+   }
+   
+.navbar input.nosubmit {
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    width: 300px;
+    padding: 9px 40px 9px 10px; /* Adjusted padding to move the icon to the right */
+    background: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position the icon on the right side */
+    background-size: 16px; /* Size of the icon */
+    transition: border-color 0.3s ease;
+    color: white; 
+}
+
+.navbar input.nosubmit::placeholder {
+    color: $text-color;
+}
+
+.navbar input.nosubmit:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: black; /* Change border color to red when focused */
+}
+
+.navbar input.nosubmit:focus::placeholder {
+    color: white; /* Set placeholder text color to white when focused */
+}
+
+.navbar .navbar-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
