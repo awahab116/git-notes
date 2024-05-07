@@ -6,3 +6,12 @@
     gap: 2rem;
   }
 
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
