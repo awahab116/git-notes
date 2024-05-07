@@ -13,9 +13,14 @@
     align-items: flex-start;
     padding: 0 2rem 0 2rem;
     border: 1px solid #f0f0f0;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     transition: box-shadow 0.3s ease; 
     margin: 1rem 0rem;
     overflow: auto;
+}
+
+.border-bottom {
+    border-bottom: '1px solid #e1e4e8';
+    width: '100%';
 }

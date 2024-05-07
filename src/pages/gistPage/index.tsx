@@ -28,14 +28,10 @@ const GistPage: React.FC = () => {
   const fileContents = Object.values(gistDetails.files).map((file) => (
     <div className="code-container" key={file.filename}>
       <div className="file-name">{file.filename}</div>
-      <div
-        className="border-bottom"
-        style={{
-          borderBottom: '1px solid #e1e4e8',
-          width: '100%',
-        }}
-      ></div>
-      <p>{file.content}</p>
+      <div className="border-bottom"></div>
+      <div>
+        <p>{file.content}</p>
+      </div>
     </div>
   ));
 
@@ -43,16 +39,7 @@ const GistPage: React.FC = () => {
     <div className="main-container">
       <UserGistInfo gistDetails={gistDetails} />
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          flexDirection: 'column',
-        }}
-      >
-        {fileContents}
-      </div>
+      {fileContents}
 
       {/* {gistDetails.files.map((file) => (
         <div className="code-container">
