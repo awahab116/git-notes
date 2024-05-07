@@ -1,14 +1,18 @@
-import React from 'react';
 import Card from '../../components/card';
+import { RootState, AppDispatch } from '../../app/store';
+import { useSelector } from 'react-redux';
 import './gistsGrid.scss';
 
 const GistsGrid = () => {
+  const publicGists = useSelector(
+    (state: RootState) => state.gists.publicGists
+  );
   const numCards = 8;
 
   return (
     <div className="grid">
-      {Array.from({ length: numCards }).map((_, index) => (
-        <Card key={index} />
+      {publicGists.map((gist) => (
+        <Card key={gist.id} gist={gist} />
       ))}
     </div>
   );

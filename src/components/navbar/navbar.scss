@@ -54,3 +54,9 @@
 .navbar input.nosubmit:focus::placeholder {
     color: white; /* Set placeholder text color to white when focused */
 }
+
+.navbar .navbar-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}

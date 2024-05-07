@@ -2,8 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/home';
 import About from '../pages/about';
+import GistPage from '../pages/gistPage';
 import RootLayout from '../layouts/root';
-import Counter from '../features/counter/counter';
 import Login from '../pages/login';
 import './App.scss';
 
@@ -15,6 +15,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/gist/:id" element={<GistPage />} />
         </Route>
       </Routes>
     </div>
