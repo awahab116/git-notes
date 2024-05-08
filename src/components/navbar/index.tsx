@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import MyButton from '../ui/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../app/store';
 import { loginUser } from '../../slice/authSlice';
+import DropdownMenu from '../dropdownMenu';
 import './navbar.scss';
 
 const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user`;
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+
   const isUserloggedIn = useSelector(
     (state: RootState) => state.auth.isUserLoggedIn
   );
@@ -24,6 +27,11 @@ export default function Navbar() {
       dispatch(loginUser(code));
     }
   }, []);
+
+  const toggleDropdown = () => {
+    console.log('toggleDropdown');
+    setIsOpen(!isOpen);
+  };
 
   console.log('userinfo avatar url', userInfo?.avatar_url);
 
@@ -44,9 +52,10 @@ export default function Navbar() {
           />
         </div>
         {isUserloggedIn && userInfo ? (
-          <div>
+          <div onClick={toggleDropdown}>
             {/* img tag to show user img */}
             <img className="navbar-avatar" src={userInfo.avatar_url} alt="" />
+            <DropdownMenu isOpen={isOpen} />
           </div>
         ) : (
           <div>

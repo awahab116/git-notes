@@ -18,9 +18,10 @@
     transition: box-shadow 0.3s ease; 
     margin: 1rem 0rem;
     overflow: auto;
+    width: 100%;
 }
 
 .border-bottom {
-    border-bottom: '1px solid #e1e4e8';
-    width: '100%';
+    border-bottom: 1px solid #e1e4e8;
+    width: 100%;
 }

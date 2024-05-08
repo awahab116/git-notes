@@ -30,7 +30,9 @@ const GistPage: React.FC = () => {
       <div className="file-name">{file.filename}</div>
       <div className="border-bottom"></div>
       <div>
-        <p>{file.content}</p>
+        <p style={{ textAlign: 'left', whiteSpace: 'break-spaces' }}>
+          {file.content}
+        </p>
       </div>
     </div>
   ));
@@ -38,16 +40,8 @@ const GistPage: React.FC = () => {
   return (
     <div className="main-container">
       <UserGistInfo gistDetails={gistDetails} />
-
+      {/* change fileContent to component */}
       {fileContents}
-
-      {/* {gistDetails.files.map((file) => (
-        <div className="code-container">
-          <div key={file.filename} className="code">
-            <p>hello</p>
-          </div>
-        </div>
-      ))} */}
     </div>
   );
 };
