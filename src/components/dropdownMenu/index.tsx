@@ -1,6 +1,7 @@
 // DropdownMenu.js
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import { Link } from 'react-router-dom';
 import './DropdownMenu.scss';
 
 function DropdownItem({ text, itemURL }: { text: string; itemURL: string }) {
@@ -23,27 +24,27 @@ function DropdownMenu({ isOpen }: { isOpen: boolean }) {
       </p>
       <ul>
         <li className="dropdownItem">
-          <a href={'https://www.google.com/'}> Your Gists </a>
+          <Link to={`https://www.google.com/`}> Your Gists </Link>
         </li>
         <li className="dropdownItem">
-          <a href={'https://www.google.com/'}> Starred Gists </a>
+          <Link to={`https://www.google.com/`}> Starred Gists </Link>
         </li>
         <li className="dropdownItem">
-          <a href={'https://www.google.com/'}> Help </a>
+          <Link to={`https://www.google.com/`}> Help </Link>
         </li>
         <li className="dropdownItem">
-          <a
-            href={
+          <Link
+            to={
               userInfo?.html_url
                 ? userInfo?.html_url
                 : 'https://www.github.com/'
             }
           >
             Your Github profile
-          </a>
+          </Link>
         </li>
         <li className="dropdownItem">
-          <a href={'https://www.google.com/'}> Signout </a>
+          <Link to={`/create-gist`}> Signout </Link>
         </li>
       </ul>
     </div>

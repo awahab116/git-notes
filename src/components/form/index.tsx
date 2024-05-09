@@ -23,7 +23,7 @@ const Form: FC<IFormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} {...rest}>
-      <div className="d-flex justify-content-center fields__email">
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
         {Array.isArray(children)
           ? children.map((child) => {
               return child.props.name
