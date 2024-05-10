@@ -15,6 +15,11 @@ const githubInstance = axios.create({
   },
 });
 
+console.log(
+  'process.env.REACT_APP_GITHUB_URL',
+  process.env.REACT_APP_GITHUB_URL
+);
+
 githubInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
 

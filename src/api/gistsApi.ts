@@ -1,4 +1,5 @@
 import { githubInstance } from './axiosInstance';
+import { GistApiType } from '../types/gistsApi.type';
 
 export const getPublicGists = async () => {
   try {
@@ -19,6 +20,21 @@ export const getGistDetails = async (id: string) => {
     const response = await githubInstance.get(`/gists/${id}`);
 
     if (response.status === 200) {
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+export const createGist = async (data: GistApiType) => {
+  try {
+    console.log('in api file', data);
+    const response = await githubInstance.post('/gists', data);
+
+    if (response.status === 201) {
       return response.data;
     } else {
       return null;

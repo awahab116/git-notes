@@ -18,19 +18,24 @@ function DropdownMenu({ isOpen }: { isOpen: boolean }) {
 
   return (
     <div className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
-      <p>
-        Signed in as <br />
-        {userInfo?.login}
-      </p>
+      <Link to="/my-profile">
+        <p>
+          Signed in as <br />
+          {userInfo?.login}
+        </p>
+      </Link>
       <ul>
         <li className="dropdownItem">
-          <Link to={`https://www.google.com/`}> Your Gists </Link>
+          <Link to="https://www.google.com/"> Your Gists </Link>
         </li>
         <li className="dropdownItem">
-          <Link to={`https://www.google.com/`}> Starred Gists </Link>
+          <Link to="https://www.google.com/"> Starred Gists </Link>
         </li>
         <li className="dropdownItem">
-          <Link to={`https://www.google.com/`}> Help </Link>
+          <Link to="/create-gist"> Create Gist </Link>
+        </li>
+        <li className="dropdownItem">
+          <Link to="https://www.google.com/"> Help </Link>
         </li>
         <li className="dropdownItem">
           <Link
@@ -44,7 +49,7 @@ function DropdownMenu({ isOpen }: { isOpen: boolean }) {
           </Link>
         </li>
         <li className="dropdownItem">
-          <Link to={`/create-gist`}> Signout </Link>
+          <Link to=""> Signout </Link>
         </li>
       </ul>
     </div>

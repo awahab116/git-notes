@@ -8,7 +8,7 @@ import { loginUser } from '../../slice/authSlice';
 import DropdownMenu from '../dropdownMenu';
 import './navbar.scss';
 
-const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user`;
+const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user,gist`;
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();

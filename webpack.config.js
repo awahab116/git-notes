@@ -19,6 +19,7 @@ module.exports = {
   },
   devServer: {
     port: 4200,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.DefinePlugin(envKeys), // Add this line to define environment variables

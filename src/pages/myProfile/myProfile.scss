@@ -1,0 +1,33 @@
+.my-profile-main-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 6rem;
+    padding: 2rem 8rem;
+}
+
+.user-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    row-gap: 2rem;
+}
+
+.user-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.github-profile-button {
+    background-color: rgb(0, 165, 153);
+    color: white;
+}
+
+.user-gist-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 2rem;    
+}
