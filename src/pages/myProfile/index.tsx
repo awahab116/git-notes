@@ -1,15 +1,29 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../../components/card';
 import { RootState, AppDispatch } from '../../app/store';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUserGists } from '../../slice/gistsSlice';
 import './myProfile.scss';
 
 const MyProfile = () => {
-  const publicGists = useSelector(
-    (state: RootState) => state.gists.publicGists
-  );
-  const numCards = 8;
-  const first8Gists = publicGists.slice(0, numCards);
+  const dispatch: AppDispatch = useDispatch();
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const userGists = useSelector((state: RootState) => state.gists.userGists);
+
+  useEffect(() => {
+    if (userInfo) {
+      dispatch(fetchUserGists(userInfo.login));
+    }
+  }, [userInfo, dispatch]);
+
+  useEffect(() => {
+    console.log('user gists', userGists);
+  }, [userGists]);
+
+  if (!userInfo) {
+    return <p>Please login to see your profile information!</p>;
+  }
 
   return (
     <div className="my-profile-main-container">
@@ -27,8 +41,8 @@ const MyProfile = () => {
       </div>
       <div className="user-gist-container">
         <h2>Your Gists</h2>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {first8Gists.map((gist) => (
+        <div className="user-gist-list">
+          {userGists.map((gist) => (
             <Card key={gist.id} gist={gist} />
           ))}
         </div>

@@ -1,6 +1,8 @@
 .nested-container {
     display: flex;
     height: 100%; /* Ensure the nested container takes up full height */
+    width: 100%;
+    flex-direction: row;
   }
   
   .image-container {
@@ -37,4 +39,38 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: left;
+  }
+
+  .gist-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0rem 0.5rem;
+  }
+
+  .gist-actions img {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    padding: 4px 2px 4px 2px;
+  }
+
+  .gist-actions button {
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: none;
+    background-color: red;
+    border-radius: 4px;
+    width: 80px;
+    height: 40px;
+    margin-right: 4px;
+  
+  }
+
+  .gist-actions span {
+    font-size: 14px;
+    margin: auto;
   }

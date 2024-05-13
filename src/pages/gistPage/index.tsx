@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import { GistDetailsType } from '../../types/gistsDetail.type';
 import { getGistDetails } from '../../api/gistsApi';
 import UserGistInfo from '../../components/userGistInfo';
+import type { RootState } from '../../app/store';
+import { useSelector } from 'react-redux';
 import './gistPage.scss';
 
 const GistPage: React.FC = () => {
   const { id } = useParams();
   const [gistDetails, setGistDetails] = useState<GistDetailsType>();
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
 
   useEffect(() => {
     if (id) {
@@ -16,10 +19,6 @@ const GistPage: React.FC = () => {
         .catch((err) => console.error(err));
     }
   }, [id]);
-
-  useEffect(() => {
-    console.log(gistDetails);
-  }, [gistDetails]);
 
   if (!gistDetails) {
     return <p>Loading...</p>;
@@ -39,7 +38,7 @@ const GistPage: React.FC = () => {
 
   return (
     <div className="main-container">
-      <UserGistInfo gistDetails={gistDetails} />
+      <UserGistInfo gistDetails={gistDetails} gistActions={!!userInfo} />
       {/* change fileContent to component */}
       {fileContents}
     </div>

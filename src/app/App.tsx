@@ -18,6 +18,7 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/gist/:id" element={<GistPage />} />
           <Route path="/create-gist" element={<CreateGist />} />
+          <Route path="/update-gist/:id" element={<CreateGist />} />
           <Route path="/my-profile" element={<MyProfile />} />
         </Route>
       </Routes>
