@@ -77,32 +77,50 @@ const UserGistInfo = ({
 
   return (
     <div className="nested-container">
-      <div className="image-container">
-        <img src={gistDetails.owner.avatar_url} alt="" />
-      </div>
-      <div className="text-container">
-        <p>
-          {gistDetails.owner.name || gistDetails.owner.login}/{' '}
-          {Object.values(gistDetails.files)[0].filename}
-        </p>
-        <p>{gistDetails?.created_at.toString()}</p>
-        <p>{gistDetails.description}</p>
+      <div style={{ display: 'flex', width: '100%' }}>
+        <div className="image-container">
+          <img src={gistDetails.owner.avatar_url} alt="" />
+        </div>
+        <div className="text-container">
+          <p>
+            {gistDetails.owner.name || gistDetails.owner.login}/{' '}
+            {Object.values(gistDetails.files)[0].filename}
+          </p>
+          <p>{gistDetails?.created_at.toString()}</p>
+          <p>{gistDetails.description}</p>
+        </div>
       </div>
 
       {gistActions && (
         <div className="gist-actions">
           {gistDetails.owner.login === userInfo?.login && (
             <>
-              <button
-                onClick={() => navigate(`/update-gist/${gistDetails.id}`)}
+              <div
+                style={{
+                  border: '1px solid #003B44',
+                  borderRadius: '6px',
+                  backgroundColor: '#003B44',
+                }}
               >
-                <img src={EditIcon} alt="" />
-                <span>Edit</span>
-              </button>
-              <button onClick={handleGistDelete}>
-                <img src={DeleteIcon} alt="" />
-                <span>Delete</span>
-              </button>
+                <button
+                  onClick={() => navigate(`/update-gist/${gistDetails.id}`)}
+                >
+                  <img src={EditIcon} alt="" />
+                  <span>Edit</span>
+                </button>
+              </div>
+              <div
+                style={{
+                  border: '1px solid #003B44',
+                  borderRadius: '6px',
+                  backgroundColor: '#003B44',
+                }}
+              >
+                <button onClick={handleGistDelete}>
+                  <img src={DeleteIcon} alt="" />
+                  <span>Delete</span>
+                </button>
+              </div>
             </>
           )}
           {isStarred ? (
@@ -111,15 +129,58 @@ const UserGistInfo = ({
               <span>Unstar</span>
             </button>
           ) : (
-            <button onClick={handleStarGist}>
-              <img src={StarIcon} alt="" />
-              <span>Star</span>
-            </button>
+            <div className="gist-star-fork-container">
+              <button
+                // className="gist-star-fork-button"
+                onClick={handleStarGist}
+              >
+                <img src={StarIcon} alt="" />
+                <span
+                  style={{
+                    marginLeft: '0px',
+                  }}
+                >
+                  Star
+                </span>
+              </button>
+              <div className="gist-actions-span-container">
+                <span
+                  style={{
+                    fontSize: '18px',
+                  }}
+                >
+                  {' '}
+                  {forkCount}
+                </span>
+              </div>
+            </div>
           )}
-          <button onClick={handleGistFork}>
-            <img src={ForkIcon} alt="" />
-            <span>Fork {forkCount}</span>
-          </button>
+          <div className="gist-star-fork-container">
+            <button
+              // className="gist-star-fork-button"
+
+              onClick={handleGistFork}
+            >
+              <img src={ForkIcon} alt="" />
+              <span
+                style={{
+                  marginLeft: '0px',
+                }}
+              >
+                Fork
+              </span>
+            </button>
+            <div className="gist-actions-span-container">
+              <span
+                style={{
+                  fontSize: '18px',
+                }}
+              >
+                {' '}
+                {forkCount}
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </div>
