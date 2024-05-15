@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import Card from '../../components/card';
+import Card from '../card';
 import './gistsGrid.scss';
 
 const GistsGrid = () => {

@@ -1,0 +1,39 @@
+.code-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #f0f0f0;
+    overflow-wrap: anywhere;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease; 
+    margin: 1rem 0rem;
+    overflow: hidden;
+    width: 100%;
+}
+
+.border-bottom {
+    display: flex;
+    border-bottom: 1px solid #e1e4e8;
+    width: 100%;
+}
+
+.file-name {
+    display: flex;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.file-content {
+    display: flex;
+    padding: 0rem 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.file-content p {
+    display: flex;
+    text-align: left;
+    white-space: break-spaces;
+}

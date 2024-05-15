@@ -6,6 +6,14 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
+  .user-gist-info-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 10px;
+  }
   
   .image-container {
     overflow: hidden;
@@ -48,6 +56,17 @@
     column-gap: 4px;
   }
 
+  .gist-actions-ud-container {
+    border: 1px solid #003B44;
+    border-radius: 6px;
+    background-color: #003B44;
+  }
+
+  .gist-actions span {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
   .gist-actions img {
     cursor: pointer;
     width: 18px;
@@ -76,6 +95,10 @@
     cursor: pointer;
   }
 
+  .gist-star-fork-container span {
+    margin-left: 0px;
+  }
+
 .gist-actions-span-container {
   display: flex;
   align-items: center;
@@ -83,7 +106,6 @@
   height: 40px;
 }
 
-  .gist-actions span {
-    font-size: 14px;
-    margin-top: 4px;
-  }
+.gist-actions-span-container span {
+  font-size: 18px;
+}

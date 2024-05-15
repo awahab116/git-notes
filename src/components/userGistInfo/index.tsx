@@ -77,21 +77,13 @@ const UserGistInfo = ({
 
   return (
     <div className="nested-container">
-      <div
-        style={{
-          display: 'flex',
-          width: '100%',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
-          columnGap: '10px',
-        }}
-      >
+      <div className="user-gist-info-container">
         <div className="image-container">
           <img src={gistDetails.owner.avatar_url} alt="" />
         </div>
         <div className="text-container">
           <p>
-            {gistDetails.owner.name || gistDetails.owner.login}/{' '}
+            {gistDetails.owner.name || gistDetails.owner.login} /{' '}
             {Object.values(gistDetails.files)[0].filename}
           </p>
           <p>{gistDetails?.created_at.toString()}</p>
@@ -103,13 +95,7 @@ const UserGistInfo = ({
         <div className="gist-actions">
           {gistDetails.owner.login === userInfo?.login && (
             <>
-              <div
-                style={{
-                  border: '1px solid #003B44',
-                  borderRadius: '6px',
-                  backgroundColor: '#003B44',
-                }}
-              >
+              <div className="gist-actions-ud-container">
                 <button
                   onClick={() => navigate(`/update-gist/${gistDetails.id}`)}
                 >
@@ -117,13 +103,7 @@ const UserGistInfo = ({
                   <span>Edit</span>
                 </button>
               </div>
-              <div
-                style={{
-                  border: '1px solid #003B44',
-                  borderRadius: '6px',
-                  backgroundColor: '#003B44',
-                }}
-              >
+              <div className="gist-actions-ud-container">
                 <button onClick={handleGistDelete}>
                   <img src={DeleteIcon} alt="" />
                   <span>Delete</span>
@@ -131,53 +111,31 @@ const UserGistInfo = ({
               </div>
             </>
           )}
-          {isStarred ? (
-            <button onClick={handleStarGist}>
-              <img src={StarIconFilled} alt="" />
-              <span>Unstar</span>
-            </button>
-          ) : (
-            <div className="gist-star-fork-container">
+
+          <div className="gist-star-fork-container">
+            {isStarred ? (
+              <button onClick={handleStarGist}>
+                <img src={StarIconFilled} alt="" />
+                <span>Unstar</span>
+              </button>
+            ) : (
               <button onClick={handleStarGist}>
                 <img src={StarIcon} alt="" />
-                <span
-                  style={{
-                    marginLeft: '0px',
-                  }}
-                >
-                  Star
-                </span>
+                <span>Star</span>
               </button>
-              <div className="gist-actions-span-container">
-                <span
-                  style={{
-                    fontSize: '18px',
-                  }}
-                >
-                  {forkCount}
-                </span>
-              </div>
+            )}
+            <div className="gist-actions-span-container">
+              <span>{forkCount}</span>
             </div>
-          )}
+          </div>
+
           <div className="gist-star-fork-container" onClick={handleGistFork}>
             <button>
               <img src={ForkIcon} alt="" />
-              <span
-                style={{
-                  marginLeft: '0px',
-                }}
-              >
-                Fork
-              </span>
+              <span>Fork</span>
             </button>
             <div className="gist-actions-span-container">
-              <span
-                style={{
-                  fontSize: '18px',
-                }}
-              >
-                {forkCount}
-              </span>
+              <span>{forkCount}</span>
             </div>
           </div>
         </div>

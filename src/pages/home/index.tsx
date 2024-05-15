@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../app/store';
-import GistsGrid from '../../features/gistsGrid/gistsGrid';
-import GistsTable from '../../features/gistsTable';
+import GistsGrid from '../../components/gistsGrid';
+import GistsTable from '../../components/gistsTable';
 import { getGists } from '../../slice/gistsSlice';
 import GridIcon from '../../assets/gridIcon.svg';
 import ListIcon from '../../assets/listIcon.svg';

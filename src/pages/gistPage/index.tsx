@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserGistInfo from '../../components/userGistInfo';
+import GistContent from '../../components/gistContent';
 import type { RootState } from '../../app/store';
 import { GistDetailsType } from '../../types/gistsDetail.type';
 import { getGistDetails } from '../../api/gistsApi';
@@ -24,29 +25,10 @@ const GistPage: React.FC = () => {
     return <p>Loading...</p>;
   }
 
-  const fileContents = Object.values(gistDetails.files).map((file) => (
-    <div className="code-container" key={file.filename}>
-      <div className="file-name">{file.filename}</div>
-      <div className="border-bottom"></div>
-      <div className="file-content">
-        <p
-          style={{
-            textAlign: 'left',
-            whiteSpace: 'break-spaces',
-            display: 'flex',
-          }}
-        >
-          {file.content}
-        </p>
-      </div>
-    </div>
-  ));
-
   return (
     <div className="main-container">
       <UserGistInfo gistDetails={gistDetails} gistActions={!!userInfo} />
-      {/* change fileContent to component */}
-      {fileContents}
+      <GistContent gistDetails={gistDetails} />
     </div>
   );
 };
