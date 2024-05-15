@@ -1,23 +1,23 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../app/store';
 import GistsGrid from '../../features/gistsGrid/gistsGrid';
-import GistsTable from '../../features/gistsTable'; // Assuming you have a component for the table view
+import GistsTable from '../../features/gistsTable';
+import { getGists } from '../../slice/gistsSlice';
 import GridIcon from '../../assets/gridIcon.svg';
 import ListIcon from '../../assets/listIcon.svg';
-import { useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../app/store';
-import { getGists } from '../../slice/gistsSlice';
 import './home.scss';
 
 const Home: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const [isGridView, setIsGridView] = useState(false); // Initial state is grid view
+  const [isGridView, setIsGridView] = useState(false);
 
   useEffect(() => {
     dispatch(getGists());
   }, [dispatch]);
 
   const toggleView = () => {
-    setIsGridView((prevState) => !prevState); // Toggle between grid and table view
+    setIsGridView((prevState) => !prevState);
   };
 
   return (
@@ -27,14 +27,14 @@ const Home: FC = () => {
           src={GridIcon}
           alt="Grid View"
           onClick={toggleView}
-          style={{ cursor: 'pointer' }}
+          className="gists-view-icon"
         />
         <div className="separate-icons"></div>
         <img
           src={ListIcon}
           alt="Table View"
           onClick={toggleView}
-          style={{ cursor: 'pointer' }}
+          className="gists-view-icon"
         />
       </div>
       {isGridView ? <GistsGrid /> : <GistsTable />}

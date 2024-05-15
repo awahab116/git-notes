@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { RootState, AppDispatch } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../app/store';
 import ForkIcon from '../../assets/forkIcon.svg';
 import StarIcon from '../../assets/starIcon.svg';
 import './gistsTable.scss';
 
 const GistsTable = () => {
-  const [gists, setGists] = useState([]);
   const navigate = useNavigate();
   const publicGists = useSelector(
     (state: RootState) => state.gists.publicGists

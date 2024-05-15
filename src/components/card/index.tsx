@@ -1,13 +1,10 @@
-// Card.js
-
-import React, { useEffect, useState } from 'react';
-import { Gist } from '../../types/gists.type';
-import { getGistDetails } from '../../api/gistsApi';
-import { GistDetailsType } from '../../types/gistsDetail.type';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import './card.scss';
 import UserGistInfo from '../userGistInfo';
+import { getGistDetails } from '../../api/gistsApi';
+import { Gist } from '../../types/gists.type';
+import { GistDetailsType } from '../../types/gistsDetail.type';
+import './card.scss';
 
 type GistCardProps = {
   gist: Gist;
@@ -15,7 +12,6 @@ type GistCardProps = {
 
 const Card = ({ gist }: GistCardProps) => {
   const [gistDetails, setGistDetails] = useState<GistDetailsType>();
-  const navigate = useNavigate();
 
   useEffect(() => {
     getGistDetails(gist.id)
@@ -27,13 +23,9 @@ const Card = ({ gist }: GistCardProps) => {
     return <p>Loading...</p>;
   }
 
-  const handleClick = () => {
-    navigate(`/gist/${gist.id}`);
-  };
-
   return (
     <Link to={`/gist/${gist.id}`} className="card">
-      <div className="card" onClick={handleClick}>
+      <div className="card">
         <div className="first-element">
           {Object.values(gistDetails.files)[0].content}
         </div>

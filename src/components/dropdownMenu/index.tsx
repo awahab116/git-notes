@@ -1,17 +1,8 @@
 // DropdownMenu.js
 import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../app/store';
 import './DropdownMenu.scss';
-
-function DropdownItem({ text, itemURL }: { text: string; itemURL: string }) {
-  return (
-    <li className="dropdownItem">
-      {/* <img src={props.img}></img> */}
-      <a href={itemURL}> {text} </a>
-    </li>
-  );
-}
 
 function DropdownMenu({ isOpen }: { isOpen: boolean }) {
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);

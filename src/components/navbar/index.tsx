@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
-import MyButton from '../ui/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../app/store';
-import { loginUser } from '../../slice/authSlice';
 import DropdownMenu from '../dropdownMenu';
+import MyButton from '../ui/button';
+import { loginUser } from '../../slice/authSlice';
+import logo from '../../assets/logo.svg';
 import './navbar.scss';
 
 const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user,gist`;

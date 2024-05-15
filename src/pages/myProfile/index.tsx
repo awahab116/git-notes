@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../../components/card';
-import { RootState, AppDispatch } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../app/store';
+import Card from '../../components/card';
 import { fetchUserGists } from '../../slice/gistsSlice';
 import './myProfile.scss';
 

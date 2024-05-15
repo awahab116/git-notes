@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { GistDetailsType } from '../../types/gistsDetail.type';
-import { getGistDetails } from '../../api/gistsApi';
+import { useSelector } from 'react-redux';
 import UserGistInfo from '../../components/userGistInfo';
 import type { RootState } from '../../app/store';
-import { useSelector } from 'react-redux';
+import { GistDetailsType } from '../../types/gistsDetail.type';
+import { getGistDetails } from '../../api/gistsApi';
 import './gistPage.scss';
 
 const GistPage: React.FC = () => {

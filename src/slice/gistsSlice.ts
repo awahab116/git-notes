@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Dispatch } from 'redux';
-import { Gist } from '../types/gists.type';
 import { getPublicGists, getUserGists } from '../api/gistsApi';
+import { Gist } from '../types/gists.type';
 
 export interface GistsState {
   publicGists: Gist[];

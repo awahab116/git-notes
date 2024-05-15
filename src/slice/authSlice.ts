@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { userGithubLogin } from '../api/authApi';
 import { Dispatch } from 'redux';
+import { userGithubLogin } from '../api/authApi';
 
 export interface User {
   login: string;

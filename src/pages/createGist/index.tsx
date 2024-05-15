@@ -1,5 +1,5 @@
-import GistForm from '../../components/gistForm';
 import { useParams } from 'react-router-dom';
+import GistForm from '../../components/gistForm';
 import './createGist.scss';
 
 const CreateGist = () => {
