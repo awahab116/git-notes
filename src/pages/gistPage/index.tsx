@@ -28,8 +28,14 @@ const GistPage: React.FC = () => {
     <div className="code-container" key={file.filename}>
       <div className="file-name">{file.filename}</div>
       <div className="border-bottom"></div>
-      <div>
-        <p style={{ textAlign: 'left', whiteSpace: 'break-spaces' }}>
+      <div className="file-content">
+        <p
+          style={{
+            textAlign: 'left',
+            whiteSpace: 'break-spaces',
+            display: 'flex',
+          }}
+        >
           {file.content}
         </p>
       </div>

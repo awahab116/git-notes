@@ -77,7 +77,15 @@ const UserGistInfo = ({
 
   return (
     <div className="nested-container">
-      <div style={{ display: 'flex', width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          columnGap: '10px',
+        }}
+      >
         <div className="image-container">
           <img src={gistDetails.owner.avatar_url} alt="" />
         </div>
@@ -130,10 +138,7 @@ const UserGistInfo = ({
             </button>
           ) : (
             <div className="gist-star-fork-container">
-              <button
-                // className="gist-star-fork-button"
-                onClick={handleStarGist}
-              >
+              <button onClick={handleStarGist}>
                 <img src={StarIcon} alt="" />
                 <span
                   style={{
@@ -149,18 +154,13 @@ const UserGistInfo = ({
                     fontSize: '18px',
                   }}
                 >
-                  {' '}
                   {forkCount}
                 </span>
               </div>
             </div>
           )}
-          <div className="gist-star-fork-container">
-            <button
-              // className="gist-star-fork-button"
-
-              onClick={handleGistFork}
-            >
+          <div className="gist-star-fork-container" onClick={handleGistFork}>
+            <button>
               <img src={ForkIcon} alt="" />
               <span
                 style={{
@@ -176,7 +176,6 @@ const UserGistInfo = ({
                   fontSize: '18px',
                 }}
               >
-                {' '}
                 {forkCount}
               </span>
             </div>

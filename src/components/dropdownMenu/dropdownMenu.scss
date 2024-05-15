@@ -58,6 +58,10 @@ p {
   cursor: pointer;
 }
 
+.dropdown-menu ul li:hover {
+  background-color: lightgray;
+}
+
 .dropdownItem {
   display: flex;
   margin: 0 auto;
@@ -67,4 +71,6 @@ p {
   max-width: 160px;
   transition: var(--speed);
 }
+
+
 
