@@ -10,7 +10,7 @@ import './home.scss';
 
 const Home: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const [isGridView, setIsGridView] = useState(false);
+  const [isGridView, setIsGridView] = useState(true);
 
   useEffect(() => {
     dispatch(getGists());

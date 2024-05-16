@@ -1,13 +1,12 @@
+@import "../../styles.scss";
+
 .code-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    @include display-flex($direction: column, $align: flex-start, $justify: flex-start);
+    @include margin(1rem, 0rem);
     border: 1px solid #f0f0f0;
     overflow-wrap: anywhere;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: box-shadow 0.3s ease; 
-    margin: 1rem 0rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
     overflow: hidden;
     width: 100%;
 }
@@ -19,15 +18,15 @@
 }
 
 .file-name {
+    @include padding(0.5rem, 0.5rem);
     display: flex;
-    padding: 0.5rem 0.5rem;
     width: 100%;
     box-sizing: border-box;
 }
 
 .file-content {
+    @include padding(0rem, 0.5rem);
     display: flex;
-    padding: 0rem 0.5rem;
     width: 100%;
     box-sizing: border-box;
 }
@@ -36,4 +35,6 @@
     display: flex;
     text-align: left;
     white-space: break-spaces;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
 }

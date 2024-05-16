@@ -1,108 +1,92 @@
+@import "../../styles.scss";
 
-  .nested-container {
-    display: flex;
-    height: 100%; /* Ensure the nested container takes up full height */
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .user-gist-info-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    column-gap: 10px;
-  }
-  
-  .image-container {
-    overflow: hidden;
-  }
-  
-  .image-container img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; 
-    object-fit: cover; 
-  }
-  
-  .text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  
-  .text-container p {
-    margin: 0; 
-    font-size: 14px;
-    padding: 3px;
-    color: rgb(122, 122, 122);
-    width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    text-align: left;
-  }
-
-  .gist-actions {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0rem 0.5rem;
-    column-gap: 4px;
-  }
-
-  .gist-actions-ud-container {
-    border: 1px solid #003B44;
-    border-radius: 6px;
-    background-color: #003B44;
-  }
-
-  .gist-actions span {
-    font-size: 14px;
-    margin-top: 4px;
+.nested-container {
+  @include height-width(100%, 100%);
+  @include display-flex($direction: row, $justify: space-between);
 }
 
-  .gist-actions img {
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    padding: 4px 2px 4px 2px;
-  }
+.user-gist-info-container {
+  @include display-flex($direction: row, $justify: flex-start, $align: flex-start);
+  width: 100%;
+  column-gap: 10px;
+}
 
-  .gist-actions button {
-    display: flex;
-    align-items: center;
-    padding: 0px 6px;
-    border: none;
-    background-color: rgb(0, 59, 68);
-    border-radius: 6px;
-    width: 80px;
-    height: 40px;
-    color: white;
-    cursor: pointer;
-  }
+.image-container {
+  overflow: hidden;
+}
 
-  .gist-star-fork-container {
-    display: flex;
-    align-items: center;
-    border: 1px solid rgb(0, 59, 68);
-    border-radius: 6px;
-    cursor: pointer;
-  }
+.image-container img {
+  @include height-width(40px, 40px);
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  .gist-star-fork-container span {
-    margin-left: 0px;
-  }
+.text-container {
+  @include display-flex($direction: column, $justify: flex-start, $align: flex-start);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-container p {
+  margin: 0;
+  font-size: 14px;
+  padding: 3px;
+  color: rgb(122, 122, 122);
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+}
+
+.gist-actions {
+  @include display-flex($direction: row, $justify: flex-start, $align: flex-start);
+  @include padding(0rem, 0.5rem);
+  column-gap: 4px;
+}
+
+.gist-actions-ud-container {
+  border: 1px solid $primary-color;
+  background-color: $primary-color;
+  border-radius: 6px;
+}
+
+.gist-actions span {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.gist-actions img {
+  cursor: pointer;
+  @include height-width(18px, 18px);
+  @include padding(4px, 2px);
+}
+
+.gist-actions button {
+  @include display-flex($align: center);
+  @include padding(0px, 6px);
+  @include height-width(40px, 80px);
+  background-color: $primary-color;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.gist-star-fork-container {
+  @include display-flex($align: center);
+  border: 1px solid $primary-color;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.gist-star-fork-container span {
+  margin-left: 0px;
+}
 
 .gist-actions-span-container {
-  display: flex;
-  align-items: center;
-  padding: 0px 12px;
+  @include display-flex($align: center);
+  @include padding(0px, 12px);
   height: 40px;
 }
 

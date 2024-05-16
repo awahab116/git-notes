@@ -1,80 +1,70 @@
+@import "../../styles.scss";
+
 .gist-form-container {
-    display: flex;
-    flex-direction: column; 
-    width: 400px;  
+    @include display-flex($direction: column);
+    width: 400px;
 }
 
-
 .gist-form-description-input {
+    @include padding(10px, 4px);
+    border: 1px solid $gist-form-border-color;
+    color: $gist-form-color;
     width: 100%;
     margin-bottom: 1rem;
-    padding: 10px 4px;
     border-radius: 6px;
-    border: 1px solid #A3A3A3;
-    color: #7A7A7A;
     font-size: 16px;
     box-sizing: border-box;
 }
 
 .gist-form-filename-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #FAFAFA;
-    border: 1px solid #A3A3A3;
+    @include display-flex($direction: column, $align: flex-start, $justify: flex-start);
+    background-color: $gist-form-background-color;
+    border: 1px solid $gist-form-border-color;
     margin-bottom: 1rem;
 }
 
 .gist-form-filename-input {
+    @include margin(0.5rem, 1rem);
+    @include padding(6px, 2px);
+    color: $gist-form-color;
+    border: 1px solid $gist-form-border-color;
     width: 40%;
-    padding: 6px 2px;
     border-radius: 4px;
-    border: 1px solid #A3A3A3;
-    color: #7A7A7A;
-    margin: 0.5rem 1rem;
-    
 }
 
 .gist-form-textarea {
-    width: 100%;
+    @include height-width(200px, 100%);
+    border: 1px solid $gist-form-border-color;
     padding: 0;
-    height: 200px;
-    border: 1px solid #A3A3A3;
-    // transition: red 0.3s ease;
 }
 
 .gist-form-textarea:focus {
-    border-color: aqua; /* Change border color on focus */
-  }
+    border-color: aqua;
+}
 
 .gist-form-button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include display-flex($direction: row, $justify: space-between);
 }
 
 .gist-form-filename-delete-container {
-    display: flex;
-    flex-direction: row;
+    @include display-flex($direction: row)
 }
 
-
 .gist-form-addFile-button {
-    padding: 6px 24px;
+    @include padding(6px, 24px);
+    background-color: $gist-form-background-color;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    background-color: #FAFAFA;
     color: black;
 }
 
 .gist-form-createGist-button {
-    padding: 6px 24px;
+    @include padding(6px, 24px);
+    background-color: $primary-color;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    background-color: rgb(0, 59, 68);
     color: white;
 }
 
@@ -86,5 +76,4 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-
 }

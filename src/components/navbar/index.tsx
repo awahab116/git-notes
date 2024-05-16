@@ -41,10 +41,7 @@ export default function Navbar() {
         <img src={logo} alt="" />
       </Link>
       <div className="navbar-right">
-        {' '}
-        {/* Wrapper for right-aligned links */}
         <div className="navbar-link">
-          {' '}
           <input
             className="nosubmit"
             type="search"
@@ -53,7 +50,6 @@ export default function Navbar() {
         </div>
         {isUserloggedIn && userInfo ? (
           <div onClick={toggleDropdown}>
-            {/* img tag to show user img */}
             <img className="navbar-avatar" src={userInfo.avatar_url} alt="" />
             <DropdownMenu isOpen={isOpen} />
           </div>

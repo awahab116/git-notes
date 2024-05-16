@@ -1,5 +1,7 @@
+@import "../../styles.scss";
+
 .create-gist-main-container {
-    padding: 0rem 8rem;
+    @include padding(0rem, 8rem);
 }
 
 h2 {
@@ -7,9 +9,5 @@ h2 {
 }
 
 .create-gist-div-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include display-flex($direction: column, $align: center, $justify: center);
 }
-

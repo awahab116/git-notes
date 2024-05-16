@@ -1,17 +1,18 @@
+
+@import "../../styles.scss"; 
+
 .home-container {
-    padding: 0rem 8rem;
+   @include padding(0, 8rem);
 }
 .gists-view {
-    display: flex;
-    justify-content: flex-end;
+    @include display-flex($justify: flex-end);
+    @include padding(2rem, 0);
     height: 100%;
-    padding: 2rem 0rem;
 }
 
 .separate-icons {
+    @include margin(0, 0.5rem);
     border-right: 1px solid black;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
 }
 
 .gists-view-icon {

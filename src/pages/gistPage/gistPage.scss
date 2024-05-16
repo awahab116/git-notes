@@ -1,8 +1,6 @@
-.main-container {
-    display: flex;
-    flex-direction: column;
-    padding: 4rem 8rem;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
+@import "../../styles.scss";
 
+.main-container {
+    @include display-flex($direction: column, $align: flex-start, $justify: flex-start);
+    @include padding(4rem, 8rem);
+}

@@ -1,11 +1,12 @@
+@import "../../styles.scss";
 
 .dropdown-menu {
+  @include padding(10px, 20px);
   position: absolute;
   top: 76px;
   right: 90px;
   background-color: rgb(250, 250, 250);
   border-radius: 10px;
-  padding: 10px 20px;
   width: 160px;
   color: black;
 }
@@ -36,30 +37,30 @@
 }
 
 p {
+  @include padding(4px, 0px);
+  @include margin(8px, 0px);
+  color: $primary-color;
   width: 100%;
   text-align: left;
-  padding: 4px 0;
-  color: black;
-  margin: 8px 0px;
 }
 
 .dropdown-menu ul {
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  padding: 0;
+  margin: 0;
 }
 
 .dropdown-menu ul li {
-  padding: 4px 0; /* Add padding as needed */
+  padding: 4px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-menu ul li:hover a {
-  color: rgb(212, 33, 9);
+  color: $primary-color;
   cursor: pointer;
 }
 
 .dropdown-menu ul li:hover {
-  background-color: lightgray;
+  background-color: $table-color;
 }
 
 .dropdownItem {
@@ -71,6 +72,3 @@ p {
   max-width: 160px;
   transition: var(--speed);
 }
-
-
-

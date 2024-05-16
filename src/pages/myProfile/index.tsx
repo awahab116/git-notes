@@ -28,12 +28,10 @@ const MyProfile = () => {
   return (
     <div className="my-profile-main-container">
       <div className="user-image-container">
-        <img
-          className="user-image"
-          src="https://avatars.githubusercontent.com/u/1?v=4"
-          alt=""
-        />
-        <Link to="/">
+        <img className="user-image" src={userInfo.avatar_url} alt="" />
+        <Link
+          to={userInfo?.html_url ? userInfo?.html_url : 'https://github.com'}
+        >
           <button className="github-profile-button" type="button">
             View Github profile
           </button>

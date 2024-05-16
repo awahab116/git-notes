@@ -1,53 +1,40 @@
+@import "../../styles.scss";
+
 .my-profile-main-container {
-    display: flex;
-    flex-direction: row;
-    // column-gap: 6rem;
-    padding: 2rem 4rem;
+    @include display-flex($direction: row);
+    @include padding(2rem, 4rem);
 }
 
 .user-image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    @include display-flex($direction: column, $align: center, $justify: flex-start);
     row-gap: 2rem;
     width: 30%;
 }
 
 .user-image {
-    width: 250px;
-    height: 250px;
+    @include height-width(250px, 250px);
     border-radius: 50%;
-
 }
 
 .github-profile-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 6px;
+    @include display-flex($align: center, $justify: center);
+    @include padding(0px, 6px);
+    @include height-width(40px, 200px);
+    background-color: $primary-color;
     border: none;
-    background-color: rgb(0, 59, 68);
     border-radius: 6px;
-    width: 200px;
-    height: 40px;
     color: white;
     cursor: pointer;
 }
 
-.user-gist-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    row-gap: 2rem;    
+.user-gist-container {
+    @include display-flex($direction: column, $align: flex-start, $justify: center);
+    row-gap: 2rem;
     width: 70%;
-
 }
 
 .user-gist-list {
-    display: flex;
-    flex-direction: column;
+    @include display-flex($direction: column);
     width: 100%;
     row-gap: 1rem;
 }

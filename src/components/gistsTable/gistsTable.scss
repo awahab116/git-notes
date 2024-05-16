@@ -1,78 +1,70 @@
+@import "../../styles.scss";
+
 .table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%,
-
-
+  @include display-flex($direction: column, $align: flex-start);
+  width: 100%;
 }
 
 table {
-    width: 100%;
-    border-spacing: 0px;
-    border: 1px solid lightgray;    
+  border: 1px solid $table-color;
+  width: 100%;
+  border-spacing: 0px;
 }
 
 th {
-    background-color: lightgray;
+  background-color: $table-color;
 }
 
 thead tr {
-
-    height: 40px;
-
+  height: 40px;
 }
 
 tbody tr {
-    height: 60px;
-    cursor: pointer;
+  height: 60px;
+  cursor: pointer;
 }
 
 tbody tr td {
-    border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid $table-color;
 }
 
 .icons-container {
-    display: flex;
-    flex-direction: row;
-    column-gap: 16px;
+  @include display-flex($direction: row);
+  column-gap: 16px;
 }
 
 .pagination-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: lightgray;
-    padding-right: 20px;
-    box-sizing: border-box;}
+  @include display-flex($justify: flex-end);
+  width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
 
 .pagination {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .pagination li {
-    cursor: pointer;
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid lightgray;
-  }
-  
-  .pagination li.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  
-  .pagination li.active {
-    background-color: lightgray;
-  }
+  @include display-flex($align: center, $justify: center);
+  list-style: none;
+}
 
-  .pagination img {
-    cursor: pointer;
-  }
+.pagination li {
+  @include margin(0, 5px);
+  @include padding(5px, 10px);
+  border: 1px solid $table-color;
+  cursor: pointer;
+}
 
-  .pagination span {
-    padding: 0px 8px;
-  }
+.pagination li.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.pagination li.active {
+  background-color: $table-color;
+}
+
+.pagination img {
+  cursor: pointer;
+}
+
+.pagination span {
+  @include padding(0px, 8px);
+}

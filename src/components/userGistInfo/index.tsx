@@ -9,11 +9,11 @@ import {
   isGistStarred,
   deleteGist,
 } from '../../api/gistsApi';
-import EditIcon from '../../assets/editIcon.svg';
-import DeleteIcon from '../../assets/deleteIcon.svg';
-import ForkIcon from '../../assets/forkIcon.svg';
-import StarIcon from '../../assets/starIcon.svg';
-import StarIconFilled from '../../assets/starIconFilled.svg';
+import EditIcon from '../../assets/lighteditIcon.svg';
+import DeleteIcon from '../../assets/lightdeleteIcon.svg';
+import ForkIcon from '../../assets/lightforkIcon.svg';
+import StarIcon from '../../assets/lightstarIcon.svg';
+import StarIconFilled from '../../assets/lightstarfilledIcon.svg';
 import { GistDetailsType } from '../../types/gistsDetail.type';
 import './userGistInfo.scss';
 
