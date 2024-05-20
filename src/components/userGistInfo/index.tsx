@@ -108,6 +108,7 @@ const UserGistInfo = ({
               }
               className="filename-span"
             >
+              {' '}
               / {Object.values(gistDetails.files)[0].filename}
             </span>
           </p>

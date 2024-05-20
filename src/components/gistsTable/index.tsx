@@ -39,14 +39,16 @@ const GistsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {currentGists.map((gist, index) => (
+          {currentGists.map((gist, _index) => (
             <tr key={gist.id} onClick={() => navigate(`/gist/${gist.id}`)}>
               <td>{gist.owner.login}</td>
               <td>
-                {gist.files[0]?.filename ? gist.files[0].filename : 'Hello'}
+                {Object.values(gist.files)[0].filename
+                  ? Object.values(gist.files)[0].filename
+                  : 'Hello'}
               </td>
               <td>
-                {gist.files[0]?.filename ? gist.files[0].filename : 'Hello'}
+                <button className="table-button">Keyword</button>
               </td>
               <td>{gist.updated_at.toString()}</td>
               <td>
