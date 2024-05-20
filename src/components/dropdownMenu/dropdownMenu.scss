@@ -27,6 +27,8 @@
   visibility: visible;
   transform: translateY(0);
   transition: var(--speed) ease;
+  box-shadow: 0 0 10px rgb(3 2 2 / 30%);
+  z-index: 1;
 }
 
 .dropdown-menu.inactive {

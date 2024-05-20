@@ -22,7 +22,31 @@
   padding: 1rem;
   text-align: left;
   font-family: 'Courier New', Courier, monospace;
+  position: relative;
+
+  .filename-hover-effect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $primary-color;
+    visibility: hidden;
+    color: white;
+    font-size: 11px;
+    @include padding(8px, 8px);
+  }
+
+  &:hover {
+    border: 1px solid $primary-color;
+
+    .filename-hover-effect {
+      visibility: visible;
+    }
+
+  }
+
 }
+
+
 
 .second-element {
   flex-grow: 1;

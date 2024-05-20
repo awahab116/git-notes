@@ -24,16 +24,19 @@ const Card = ({ gist }: GistCardProps) => {
   }
 
   return (
-    <Link to={`/gist/${gist.id}`} className="card">
-      <div className="card">
-        <div className="first-element">
-          {Object.values(gistDetails.files)[0].content}
-        </div>
-        <div className="second-element">
-          <UserGistInfo gistDetails={gistDetails} />
+    // <Link to={`/gist/${gist.id}`} className="card">
+    <div className="card">
+      <div className="first-element">
+        {Object.values(gistDetails.files)[0].content}
+        <div className="filename-hover-effect">
+          {Object.values(gistDetails.files)[0].filename}
         </div>
       </div>
-    </Link>
+      <div className="second-element">
+        <UserGistInfo gistDetails={gistDetails} />
+      </div>
+    </div>
+    // </Link>
   );
 };
 

@@ -145,7 +145,7 @@ const GistForm: React.FC<GistFormProps> = ({ gistId }) => {
           {...register('gistDiscription')}
         />
         {errors.gistDiscription && (
-          <span>{errors.gistDiscription.message}</span>
+          <span style={{ color: 'red' }}>{errors.gistDiscription.message}</span>
         )}
         <div>
           {fields.map((field, index) => (

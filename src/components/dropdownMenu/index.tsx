@@ -1,11 +1,19 @@
 //DropdownMenu.js
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { RootState } from '../../app/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootState, AppDispatch } from '../../app/store';
+import { githubUserLogout } from '../../slice/authSlice';
 import './DropdownMenu.scss';
 
 function DropdownMenu({ isOpen }: { isOpen: boolean }) {
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSignout = () => {
+    dispatch(githubUserLogout());
+    navigate('/');
+  };
 
   return (
     <div className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
@@ -48,7 +56,7 @@ function DropdownMenu({ isOpen }: { isOpen: boolean }) {
             Help
           </Link>
         </li>
-        <li className="dropdownItem">
+        <li className="dropdownItem" onClick={handleSignout}>
           <Link to=""> Signout </Link>
         </li>
       </ul>

@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import ForkIcon from '../../assets/forkIcon.svg';
 import StarIcon from '../../assets/starIcon.svg';
-import LessIcon from '../../assets/lessIcon.svg';
-import GreaterIcon from '../../assets/greaterIcon.svg';
+import Pagination from '../pagination';
 import './gistsTable.scss';
 
 const GistsTable = () => {
@@ -29,7 +28,6 @@ const GistsTable = () => {
 
   return (
     <div className="table-container">
-      <h2>GitHub Gists</h2>
       <table>
         <thead>
           <tr>
@@ -61,29 +59,11 @@ const GistsTable = () => {
           ))}
         </tbody>
       </table>
-      <div className="pagination-container">
-        <ul className="pagination">
-          <img
-            src={LessIcon}
-            alt="less"
-            onClick={() => paginate(currentPage - 1)}
-            className={`pagination-button ${
-              currentPage === 1 ? 'disabled' : ''
-            }`}
-          />
-          <span> Page</span>
-          <li>{currentPage}</li>
-          <span>of {totalPages}</span>
-          <img
-            src={GreaterIcon}
-            alt="greater"
-            onClick={() => paginate(currentPage + 1)}
-            className={`pagination-button ${
-              currentPage === totalPages ? 'disabled' : ''
-            }`}
-          />
-        </ul>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        paginate={paginate}
+      />
     </div>
   );
 };

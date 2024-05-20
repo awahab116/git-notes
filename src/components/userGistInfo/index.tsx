@@ -66,6 +66,15 @@ const UserGistInfo = ({
       .catch((err) => console.error(err));
   };
 
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+    link: string
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    navigate(link);
+  };
+
   useEffect(() => {
     if (gistActions) {
       console.log('checking if gist is starred ', gistActions);
@@ -78,13 +87,29 @@ const UserGistInfo = ({
   return (
     <div className="nested-container">
       <div className="user-gist-info-container">
-        <div className="image-container">
+        <div
+          className="image-container"
+          onClick={() => (window.location.href = gistDetails.owner.html_url)}
+        >
           <img src={gistDetails.owner.avatar_url} alt="" />
         </div>
         <div className="text-container">
           <p>
-            {gistDetails.owner.name || gistDetails.owner.login} /{' '}
-            {Object.values(gistDetails.files)[0].filename}
+            <span
+              onClick={() =>
+                (window.location.href = gistDetails.owner.html_url)
+              }
+            >
+              {gistDetails.owner.name || gistDetails.owner.login}
+            </span>
+            <span
+              onClick={(event: React.MouseEvent<HTMLSpanElement, MouseEvent>) =>
+                handleNavigation(event, `/gist/${gistDetails.id}`)
+              }
+              className="filename-span"
+            >
+              / {Object.values(gistDetails.files)[0].filename}
+            </span>
           </p>
           <p>{gistDetails?.created_at.toString()}</p>
           <p>{gistDetails.description}</p>

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../app/store';
 import DropdownMenu from '../dropdownMenu';
 import MyButton from '../ui/button';
-import { loginUser } from '../../slice/authSlice';
+import { loginUser, githubUserDataLoaded } from '../../slice/authSlice';
 import logo from '../../assets/logo.svg';
 import './navbar.scss';
 

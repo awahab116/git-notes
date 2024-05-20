@@ -1,13 +1,22 @@
-
-@import "../../styles.scss"; 
+@import "../../styles.scss";
 
 .home-container {
-   @include padding(0, 8rem);
+    @include padding(0, 8rem);
 }
+
+.gists-view-icon.active {
+    background-color: lightgrey;
+}
+
 .gists-view {
-    @include display-flex($justify: flex-end);
-    @include padding(2rem, 0);
+    @include display-flex($justify: space-between, $align: center);
+    @include padding(1rem, 0);
     height: 100%;
+
+    img {
+        @include padding(0.5rem, 0.5rem);
+        border: 1px solid $table-color;
+    }
 }
 
 .separate-icons {

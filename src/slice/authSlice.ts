@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Dispatch } from 'redux';
 import { userGithubLogin } from '../api/authApi';
+import { userGistsLoaded } from './gistsSlice';
+import { act } from 'react';
 
 export interface User {
   login: string;
@@ -12,6 +14,7 @@ export interface User {
 export interface AuthState {
   isUserLoggedIn: boolean;
   userInfo: User | null;
+  userDataLoaded: boolean;
 }
 
 export const loginUser = (code: string) => async (dispatch: Dispatch) => {
@@ -31,6 +34,17 @@ export const loginUser = (code: string) => async (dispatch: Dispatch) => {
   }
 };
 
+export const userDataLoaded =
+  (isLoading: Boolean = false) =>
+  async (dispatch: Dispatch) => {
+    dispatch(githubUserDataLoaded(isLoading));
+  };
+
+export const logoutUser = () => async (dispatch: Dispatch) => {
+  dispatch(githubUserLogout());
+  dispatch(userGistsLoaded([]));
+};
+
 const initialState: AuthState = {
   isUserLoggedIn:
     localStorage.getItem('isUserLoggedIn') !== null
@@ -39,6 +53,7 @@ const initialState: AuthState = {
   userInfo: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user')!)
     : undefined,
+  userDataLoaded: false,
 };
 
 export const authSlice = createSlice({
@@ -49,6 +64,7 @@ export const authSlice = createSlice({
     githubUserLogin: (state, action) => {
       console.log('in action github ', action);
       state.isUserLoggedIn = true;
+      state.userDataLoaded = false;
       state.userInfo = action.payload.user;
       localStorage.setItem('isUserLoggedIn', 'true');
       localStorage.setItem('user', JSON.stringify(action.payload.user));
@@ -59,10 +75,16 @@ export const authSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem('isUserLoggedIn');
       localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    },
+    githubUserDataLoaded: (state, action) => {
+      console.log('in action userLoaded', action);
+      state.userDataLoaded = action.payload;
     },
   },
 });
 
-export const { githubUserLogin, githubUserLogout } = authSlice.actions;
+export const { githubUserLogin, githubUserLogout, githubUserDataLoaded } =
+  authSlice.actions;
 
 export default authSlice.reducer;

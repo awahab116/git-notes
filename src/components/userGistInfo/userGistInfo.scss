@@ -12,7 +12,7 @@
 }
 
 .image-container {
-  overflow: hidden;
+  cursor: pointer;
 }
 
 .image-container img {
@@ -37,6 +37,18 @@
   text-overflow: ellipsis;
   overflow: hidden;
   text-align: left;
+
+  span {
+    color: $primary-color;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+}
+
+.filename-span {
+  font-weight: 700;
+
 }
 
 .gist-actions {
