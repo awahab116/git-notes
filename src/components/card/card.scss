@@ -44,6 +44,24 @@
 
   }
 
+  .line-wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .line-number {
+    min-width: 20px;
+    text-align: right;
+    padding-right: 10px;
+    color: darkgray;
+  }
+
+  .line-content {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+
 }
 
 

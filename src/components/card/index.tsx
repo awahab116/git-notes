@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import UserGistInfo from '../userGistInfo';
 import { getGistDetails } from '../../api/gistsApi';
 import { Gist } from '../../types/gists.type';
@@ -17,17 +17,28 @@ const Card = ({ gist }: GistCardProps) => {
     getGistDetails(gist.id)
       .then((resp) => setGistDetails(resp))
       .catch((err) => console.error(err));
-  }, []);
+  }, [gist.id]);
 
   if (!gistDetails) {
     return <p>Loading...</p>;
   }
 
+  const contentWithLineNumbers = Object.values(gistDetails.files)[0]
+    .content.split('\n')
+    .map((line, index) => {
+      const lineNumber = index + 1;
+      return (
+        <div className="line-wrapper" key={index}>
+          <span className="line-number">{lineNumber}</span>
+          <span className="line-content">{line}</span>
+        </div>
+      );
+    });
+
   return (
-    // <Link to={`/gist/${gist.id}`} className="card">
     <div className="card">
       <div className="first-element">
-        {Object.values(gistDetails.files)[0].content}
+        {contentWithLineNumbers}
         <div className="filename-hover-effect">
           {Object.values(gistDetails.files)[0].filename}
         </div>
@@ -36,7 +47,6 @@ const Card = ({ gist }: GistCardProps) => {
         <UserGistInfo gistDetails={gistDetails} />
       </div>
     </div>
-    // </Link>
   );
 };
 

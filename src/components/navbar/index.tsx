@@ -7,12 +7,14 @@ import MyButton from '../ui/button';
 import { loginUser, githubUserDataLoaded } from '../../slice/authSlice';
 import logo from '../../assets/logo.svg';
 import './navbar.scss';
+import { searchGists } from 'src/slice/gistsSlice';
 
 const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user,gist`;
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [seachGist, setSearchGist] = useState('');
 
   const isUserloggedIn = useSelector(
     (state: RootState) => state.auth.isUserLoggedIn
@@ -27,6 +29,10 @@ export default function Navbar() {
       dispatch(loginUser(code));
     }
   }, []);
+
+  useEffect(() => {
+    console.log('searchGist ', seachGist);
+  }, [seachGist]);
 
   const toggleDropdown = () => {
     console.log('toggleDropdown');
@@ -46,6 +52,7 @@ export default function Navbar() {
             className="nosubmit"
             type="search"
             placeholder="Search Notes..."
+            onChange={(e) => dispatch(searchGists(e.target.value))}
           />
         </div>
         {isUserloggedIn && userInfo ? (

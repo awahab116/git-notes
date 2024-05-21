@@ -6,11 +6,13 @@ import { Gist } from '../types/gists.type';
 export interface GistsState {
   publicGists: Gist[];
   userGists: Gist[];
+  searchedGists?: Gist[];
 }
 
 const initialState: GistsState = {
   publicGists: [],
   userGists: [],
+  searchedGists: [],
 };
 
 export const getGists = () => async (dispatch: Dispatch) => {
@@ -59,10 +61,21 @@ export const gistsSlice = createSlice({
       );
       console.log('user gists after delete', state.userGists);
     },
+    searchGists(state, action) {
+      const searchQuery = action.payload;
+      //find gists which contains searchQuery string in login
+      if (searchQuery.length) {
+        state.searchedGists = state.publicGists.filter((gist) =>
+          gist.owner.login.includes(searchQuery)
+        );
+      } else {
+        state.searchedGists = [];
+      }
+    },
   },
 });
 
-export const { publicGists, userGistsLoaded, deleteUserGist } =
+export const { publicGists, userGistsLoaded, deleteUserGist, searchGists } =
   gistsSlice.actions;
 
 export default gistsSlice.reducer;

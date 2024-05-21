@@ -1,30 +1,15 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../app/store';
-import ForkIcon from '../../assets/forkIcon.svg';
-import StarIcon from '../../assets/starIcon.svg';
 import Pagination from '../pagination';
 import './gistsTable.scss';
+import ForkIcon from '../../assets/forkIcon.svg';
+import StarIcon from '../../assets/starIcon.svg';
+import useGistsPagination from '../../customHooks';
 
 const GistsTable = () => {
   const navigate = useNavigate();
-  const publicGists = useSelector(
-    (state: RootState) => state.gists.publicGists
-  );
-  const [currentPage, setCurrentPage] = useState(1);
-  const gistsPerPage = 10;
-
-  const indexOfLastGist = currentPage * gistsPerPage;
-  const indexOfFirstGist = indexOfLastGist - gistsPerPage;
-  const currentGists = publicGists.slice(indexOfFirstGist, indexOfLastGist);
-  const totalPages = Math.ceil(publicGists.length / gistsPerPage);
-
-  const paginate = (pageNumber: number) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
+  const { currentGists, currentPage, totalPages, paginate } =
+    useGistsPagination(10);
 
   return (
     <div className="table-container">
@@ -39,7 +24,7 @@ const GistsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {currentGists.map((gist, _index) => (
+          {currentGists.map((gist) => (
             <tr key={gist.id} onClick={() => navigate(`/gist/${gist.id}`)}>
               <td>{gist.owner.login}</td>
               <td>
