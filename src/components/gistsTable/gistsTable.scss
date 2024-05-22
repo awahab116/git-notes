@@ -50,20 +50,6 @@ tbody tr td {
   background-color: $primary-color;
 }
 
-.icons-container {
-  @include display-flex($direction: row);
-  column-gap: 16px;
-
-  img {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-}
 
 .pagination-container {
   @include display-flex($justify: flex-end);

@@ -140,7 +140,9 @@ const GistForm: React.FC<GistFormProps> = ({ gistId }) => {
         className="gist-form-container"
       >
         <input
-          className="gist-form-description-input"
+          className={`gist-form-description-input ${
+            errors.gistDiscription ? 'error' : ''
+          }`}
           placeholder="Gist description"
           {...register('gistDiscription')}
         />
@@ -152,7 +154,9 @@ const GistForm: React.FC<GistFormProps> = ({ gistId }) => {
             <div key={field.id} className="gist-form-filename-container">
               <div className="gist-form-filename-delete-container">
                 <input
-                  className="gist-form-filename-input"
+                  className={`gist-form-filename-input ${
+                    errors?.files?.[index]?.gistFilename ? 'error' : ''
+                  }`}
                   placeholder="Filename"
                   {...register(`files.${index}.gistFilename` as const)}
                 />
@@ -169,7 +173,9 @@ const GistForm: React.FC<GistFormProps> = ({ gistId }) => {
                 <span>{errors.files?.[index]?.gistFilename?.message}</span>
               )}
               <textarea
-                className="gist-form-textarea"
+                className={`gist-form-textarea ${
+                  errors?.files?.[index]?.gistFileContent ? 'error' : ''
+                }`}
                 {...register(`files.${index}.gistFileContent` as const)}
               />
               {errors.files?.[index]?.gistFileContent && (

@@ -1,9 +1,9 @@
 import { githubInstance } from './axiosInstance';
 import { GistApiType } from '../types/gistsApi.type';
-
+import { Gist } from '../types/gists.type';
 export const getPublicGists = async () => {
   try {
-    const response = await githubInstance.get('/gists/public');
+    const response = await githubInstance.get<GistApiType>('/gists/public');
 
     if (response.status === 200) {
       return response.data;
@@ -102,9 +102,7 @@ export const forkGist = async (id: string) => {
 
 export const isGistStarred = async (id: string) => {
   try {
-    console.log('id ', id);
     const response = await githubInstance.get(`/gists/${id}/star`);
-    console.log('response gist star ', response);
     if (response.status === 204) {
       return true;
     } else {
@@ -146,6 +144,36 @@ export const unstarGist = async (id: string) => {
 export const getGist = async (id: string) => {
   try {
     const response = await githubInstance.get(`/gists/${id}`);
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+export const githubUserDetails = async (username: string) => {
+  try {
+    const response = await githubInstance.get(`/users/${username}`);
+
+    if (response.status === 200) {
+      console.log('response user details ', response.data);
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
+
+//get gists fork
+export const getGistForks = async (id: string) => {
+  try {
+    const response = await githubInstance.get(`/gists/${id}/forks`);
 
     if (response.status === 200) {
       return response.data;

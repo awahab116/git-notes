@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Dispatch } from 'redux';
 import { userGithubLogin } from '../api/authApi';
 import { userGistsLoaded } from './gistsSlice';
-import { act } from 'react';
 
 export interface User {
   login: string;

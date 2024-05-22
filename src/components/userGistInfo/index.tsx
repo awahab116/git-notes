@@ -89,15 +89,25 @@ const UserGistInfo = ({
       <div className="user-gist-info-container">
         <div
           className="image-container"
-          onClick={() => (window.location.href = gistDetails.owner.html_url)}
+          onClick={(event: React.MouseEvent<HTMLSpanElement, MouseEvent>) =>
+            handleNavigation(
+              event,
+              `/my-profile/${gistDetails.owner.name || gistDetails.owner.login}`
+            )
+          }
         >
           <img src={gistDetails.owner.avatar_url} alt="" />
         </div>
         <div className="text-container">
           <p>
             <span
-              onClick={() =>
-                (window.location.href = gistDetails.owner.html_url)
+              onClick={(event: React.MouseEvent<HTMLSpanElement, MouseEvent>) =>
+                handleNavigation(
+                  event,
+                  `/my-profile/${
+                    gistDetails.owner.name || gistDetails.owner.login
+                  }`
+                )
               }
             >
               {gistDetails.owner.name || gistDetails.owner.login}

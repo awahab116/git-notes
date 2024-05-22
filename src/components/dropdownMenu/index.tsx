@@ -17,7 +17,7 @@ function DropdownMenu({ isOpen }: { isOpen: boolean }) {
 
   return (
     <div className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
-      <Link to="/my-profile">
+      <Link to={`/my-profile/${userInfo?.login}`}>
         <p>
           Signed in as <br />
           {userInfo?.login}

@@ -1,10 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../pagination';
 import './gistsTable.scss';
-import ForkIcon from '../../assets/forkIcon.svg';
-import StarIcon from '../../assets/starIcon.svg';
 import useGistsPagination from '../../customHooks';
+import ForkStarGist from '../forkStarGist';
 
 const GistsTable = () => {
   const navigate = useNavigate();
@@ -25,7 +23,10 @@ const GistsTable = () => {
         </thead>
         <tbody>
           {currentGists.map((gist) => (
-            <tr key={gist.id} onClick={() => navigate(`/gist/${gist.id}`)}>
+            <tr
+              key={gist.id}
+              // onClick={() => navigate(`/gist/${gist.id}`)}
+            >
               <td>{gist.owner.login}</td>
               <td>
                 {Object.values(gist.files)[0].filename
@@ -37,10 +38,7 @@ const GistsTable = () => {
               </td>
               <td>{gist.updated_at.toString()}</td>
               <td>
-                <div className="icons-container">
-                  <img src={ForkIcon} alt="fork" />
-                  <img src={StarIcon} alt="star" />
-                </div>
+                <ForkStarGist gist={gist} />
               </td>
             </tr>
           ))}

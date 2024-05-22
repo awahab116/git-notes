@@ -5,12 +5,16 @@
     width: 400px;
 }
 
+.gist-form-container input.error {
+    outline-color: red;
+}
+
+
 .gist-form-description-input {
     @include padding(10px, 4px);
     border: 1px solid $gist-form-border-color;
     color: $gist-form-color;
     width: 100%;
-    margin-bottom: 1rem;
     border-radius: 6px;
     font-size: 16px;
     box-sizing: border-box;
@@ -22,9 +26,9 @@
 
 .gist-form-filename-container {
     @include display-flex($direction: column, $align: flex-start, $justify: flex-start);
+    @include margin(1rem, 0rem);
     background-color: $gist-form-background-color;
     border: 1px solid $gist-form-border-color;
-    margin-bottom: 1rem;
 }
 
 .gist-form-filename-input {
@@ -89,4 +93,13 @@
 .gist-form-filename-container span {
     color: red;
     width: 100%;
+}
+
+
+.gist-form-filename-input.error {
+    outline-color: red;
+}
+
+.gist-form-textarea.error {
+    outline-color: red;
 }

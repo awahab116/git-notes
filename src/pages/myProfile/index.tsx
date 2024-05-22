@@ -1,36 +1,45 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../app/store';
 import Card from '../../components/card';
+import { getUserGists, githubUserDetails } from '../../api/gistsApi';
 import { fetchUserGists } from '../../slice/gistsSlice';
+import { Gist } from '../../types/gists.type';
+import { User } from '../../slice/authSlice';
 import './myProfile.scss';
 
 const MyProfile = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
-  const userGists = useSelector((state: RootState) => state.gists.userGists);
+  const [gists, setGists] = useState<Gist[] | null>();
+  const [userDetails, setUserDetails] = useState<User | null>(null);
+  const { username } = useParams();
+
+  const userInfoAndGists = async (name: string) => {
+    const userGistsRes = await getUserGists(name);
+    const userDetailsRes = await githubUserDetails(name);
+    console.log('user gists', userGistsRes);
+    setUserDetails(userDetailsRes);
+    setGists(userGistsRes);
+  };
 
   useEffect(() => {
-    if (userInfo) {
-      dispatch(fetchUserGists(userInfo.login));
+    if (username) {
+      userInfoAndGists(username);
     }
-  }, [userInfo, dispatch]);
+  }, [username]);
 
-  useEffect(() => {
-    console.log('user gists', userGists);
-  }, [userGists]);
-
-  if (!userInfo) {
+  if (!username) {
     return <p>Please login to see your profile information!</p>;
   }
 
   return (
     <div className="my-profile-main-container">
       <div className="user-image-container">
-        <img className="user-image" src={userInfo.avatar_url} alt="" />
+        <img className="user-image" src={userDetails?.avatar_url} alt="" />
         <Link
-          to={userInfo?.html_url ? userInfo?.html_url : 'https://github.com'}
+          to={
+            userDetails?.html_url ? userDetails?.html_url : 'https://github.com'
+          }
         >
           <button className="github-profile-button" type="button">
             View Github profile
@@ -40,9 +49,7 @@ const MyProfile = () => {
       <div className="user-gist-container">
         <h2>Your Gists</h2>
         <div className="user-gist-list">
-          {userGists.map((gist) => (
-            <Card key={gist.id} gist={gist} />
-          ))}
+          {gists && gists.map((gist) => <Card key={gist.id} gist={gist} />)}
         </div>
       </div>
     </div>

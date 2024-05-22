@@ -46,7 +46,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/my-profile"
+            path="/my-profile/:username"
             element={
               <ProtectedRoute>
                 <div>
