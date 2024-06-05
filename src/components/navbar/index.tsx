@@ -8,13 +8,14 @@ import { loginUser, githubUserDataLoaded } from '../../slice/authSlice';
 import logo from '../../assets/logo.svg';
 import './navbar.scss';
 import { searchGists } from 'src/slice/gistsSlice';
+import _debounce from 'lodash/debounce';
 
 const githubOAuthURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&scope=user,gist`;
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [seachGist, setSearchGist] = useState('');
+  const [searchGist, setSearchGist] = useState('');
 
   const isUserloggedIn = useSelector(
     (state: RootState) => state.auth.isUserLoggedIn
@@ -31,8 +32,17 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    console.log('searchGist ', seachGist);
-  }, [seachGist]);
+    console.log('searchGist ', searchGist);
+    const debouncedSearch = _debounce((value: string) => {
+      dispatch(searchGists(value));
+    }, 3000);
+
+    debouncedSearch(searchGist);
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchGist, dispatch]);
 
   const toggleDropdown = () => {
     console.log('toggleDropdown');
@@ -52,7 +62,7 @@ export default function Navbar() {
             className="nosubmit"
             type="search"
             placeholder="Search Notes..."
-            onChange={(e) => dispatch(searchGists(e.target.value))}
+            onChange={(e) => setSearchGist(e.target.value)}
           />
         </div>
         {isUserloggedIn && userInfo ? (
